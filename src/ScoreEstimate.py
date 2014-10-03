@@ -33,7 +33,7 @@ def Estimate(url_recom, url_result):
             dict_recom[user_temp].append(news_temp)
             
         read_recom = recom.readline()
-
+    recom.close()
 
     while(read_result!=''):
         result_temp=re.findall(r_read,read_result)
@@ -42,6 +42,7 @@ def Estimate(url_recom, url_result):
         dict_result[user_temp]= news_temp
         count_result+=1
         read_result=result.readline()
+    result.close()
 
     #print dict_recom
     #print users,'\n' #,count_users
