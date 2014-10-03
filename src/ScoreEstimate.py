@@ -11,7 +11,7 @@ def Estimate(url_recom, url_result):
     result = open(url_result, 'r')
     read_recom = recom.readline()
     read_result=result.readline()
-    r_read=r"\d{6,11}"
+    r_read=r"\d{3,11}"
     dict_recom={}
     dict_result={}
     count_recom =0
