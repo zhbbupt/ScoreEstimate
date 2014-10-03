@@ -3,7 +3,9 @@ Created on 2014-10-2
 
 @author: Administrator
 '''
+from __future__ import division
 import re
+
 def Estimate(url_recom, url_result):
     recom = open(url_recom, 'r')
     result = open(url_result, 'r')
@@ -14,7 +16,7 @@ def Estimate(url_recom, url_result):
     dict_result={}
     count_recom =0
     count_result=0
-    count_users=0
+    #count_users=0
     users=[]
     while(read_recom != ''):
         recom_temp=re.findall(r_read,read_recom)
@@ -24,7 +26,7 @@ def Estimate(url_recom, url_result):
         
         if not (user_temp in users):
             users.append(user_temp)
-            count_users+=1
+            #count_users+=1
             dict_recom[user_temp]=[]
             dict_recom[user_temp].append(news_temp)
         else:
@@ -41,7 +43,27 @@ def Estimate(url_recom, url_result):
         count_result+=1
         read_result=result.readline()
 
-    #print dict_recom,count_users
-    #print dict_result   
-#Estimate('data/recommendation.txt','data/result.txt')
+    #print dict_recom
+    #print users,'\n' #,count_users
+    #print dict_result,'\n',count_result
+    
+    hit_u=0
+    
+    for user in users:
+        if dict_result.get(user) in dict_recom[user]:
+            hit_u+=1;
+    precision = hit_u/count_recom
+    recall    = hit_u/count_result
+    
+    #print hit_u
+    #print precision
+    #print recall
+    
+    if hit_u!=0:
+        F=2/((1/precision)+(1/recall))
+        return F
+    else:
+        return "hit_u=0"   
+
+#print Estimate('data/recommendation.txt','data/result.txt')
         
