@@ -61,9 +61,9 @@ def Estimate(url_recom, url_result):
     
     if hit_u!=0:
         F=2/((1/precision)+(1/recall))
-        return F
+        return " F=%0.20f\n hit_u=%d\n precision=%0.20f\n recall=%0.20f " %(F,hit_u,precision,recall)
     else:
-        return "hit_u=0"   
+        return "hit_u=%d" %hit_u   
 
 #print Estimate('data/recommendation.txt','data/result.txt')
         
