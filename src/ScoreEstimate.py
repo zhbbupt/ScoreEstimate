@@ -1,7 +1,7 @@
 '''
 Created on 2014-10-2
 
-@author: Administrator
+@author: zhanghb
 '''
 from __future__ import division
 import re
